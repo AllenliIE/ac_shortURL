@@ -2,6 +2,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const exphbs = require('express-handlebars')
 
 //Setting Mongoose
 const mongoose = require('mongoose')
@@ -18,10 +19,14 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
+//Use handlebars to template engine setting
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))  //input exphbs and parameters
+app.set('view engine', 'hbs')  //open handlebars
+
 
 //Setting index.js router
 app.get('/', (req, res) => {
-  res.send('hello world')
+  res.render('index')
 })
 
 //Setting port 3000
