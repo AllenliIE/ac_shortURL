@@ -35,9 +35,9 @@ app.get('/', (req, res) => {
 
 //Setting shortURL Change
 app.post('/', (req, res) => {
-  //當index的input不是url時，回到首頁
-  if (!req.body.url) return res.redirect('/')
   const originalURL = req.body.url
+  //當index的input不是url時，回到首頁 
+  if (!originalURL) return res.redirect('/')
 
   URL.findOne({ originalURL })
     //如果data正確，回傳data，否則URL新增短網址與原始網址
