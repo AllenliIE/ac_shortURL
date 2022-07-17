@@ -53,6 +53,26 @@ app.post('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
+//Setting shortURL link with originalURL
+app.get("/:shortURL", (req, res) => {
+  //用params取出短網址的新id
+  const { shortURL } = req.params
+
+  //從資料庫找出短網址的新id，如果找不到則顯示錯誤資訊
+  URL.findOne({ shortURL })
+    .then(data => {
+      if (!data) {
+        return res.render("error", {
+          errorMsg: "Can't found the URL",
+          errorURL: req.headers.host + "/" + shortURL,
+        })
+      }
+      //找到資料的話，重新渲染原始的網址
+      res.redirect(data.originalURL)
+    })
+    .catch(error => console.error(error))
+})
+
 //Setting port 3000
 app.listen(port, () => {
   console.log(`App is running on http://localhost:${port}`)
