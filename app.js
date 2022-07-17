@@ -3,10 +3,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 const exphbs = require('express-handlebars')
-const { Error } = require('mongoose')
 const URL = require('./models/URL')
-
-
+const shortenURL = require('./application/shortenURL')
 
 //Setting Mongoose
 const mongoose = require('mongoose')
@@ -35,15 +33,15 @@ app.get('/', (req, res) => {
 
 //Setting shortURL Change
 app.post('/', (req, res) => {
-  const originalURL = req.body.url
   //當index的input不是url時，回到首頁 
-  if (!originalURL) return res.redirect('/')
+  if (!req.body.url) return res.redirect('/')
+  const shortURL = shortenURL()
 
-  URL.findOne({ originalURL })
+  URL.findOne({ originalURL: req.body.url })
     //如果data正確，回傳data，否則URL新增短網址與原始網址
-    .then(data => data ? data : URL.create({ shortURL, originalURL }))
+    .then(data => data ? data : URL.create({ shortURL, originalURL: originalURL }))
     .then(data =>
-      //回到index頁面顯示原始網址與短網址
+      //回到index頁面顯示原 始網址與短網址
       res.render('index', {
         origin: req.headers.origin,
         shortURL: data.shortURL

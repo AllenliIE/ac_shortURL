@@ -1,14 +1,13 @@
-<header>
-  <div class="container text-center" style="width:30rem;">
-    {{#if shortURL}}
-    <h3>Success! Please use this link:</h3>
-    <p>{{origin}}/{{shortURL}}</p>
-    <button type="button" class="copy btn btn-primary mt-4 " onclick="copy">Copy</button>
-    {{else}}
-    <input class="form-control" type="text" name="url" placeholder="Input URL here" style="background-color:#F5F5F5"
+<div class="container text-center" style="width:30rem;">
+  {{#if shortURL}}
+  <h3>Success! Please use this link:</h3>
+  <p>{{origin}}/{{shortURL}}</p>
+  <button type="button" class="copy btn btn-primary mt-4">Copy</button>
+  {{else}}
+  <form action="/" method="POST">
+    <input class="form-control" type="url" name="url" placeholder="Input URL here" style="background-color:#F5F5F5"
       required>
-    <button type="button" class="btn btn-outline-primary mt-4 " style="width:50%;">Shorten</button>
-    </form>
-    {{/if}}
-  </div>
-</header>
+    <button class="btn btn-outline-primary mt-4" type="submit" style="width:50%;">Shorten</button>
+  </form>
+  {{/if}}
+</div>
