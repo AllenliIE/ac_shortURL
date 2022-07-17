@@ -5,6 +5,7 @@ const port = 3000
 const exphbs = require('express-handlebars')
 const URL = require('./models/URL')
 const shortenURL = require('./application/shortenURL')
+const bodyParser = require('body-parser')
 
 //Setting Mongoose
 const mongoose = require('mongoose')
@@ -22,6 +23,7 @@ db.once('open', () => {
 })
 
 //Use handlebars to template engine setting
+app.use(bodyParser.urlencoded({ extended: true }))
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))  //input exphbs and parameters
 app.set('view engine', 'hbs')  //open handlebars
 
@@ -34,12 +36,13 @@ app.get('/', (req, res) => {
 //Setting shortURL Change
 app.post('/', (req, res) => {
   //當index的input不是url時，回到首頁 
-  if (!req.body.url) return res.redirect('/')
   const shortURL = shortenURL()
+  const originalURL = req.body.url
+  if (!originalURL) return res.redirect('/')
 
-  URL.findOne({ originalURL: req.body.url })
+  URL.findOne({ originalURL })
     //如果data正確，回傳data，否則URL新增短網址與原始網址
-    .then(data => data ? data : URL.create({ shortURL, originalURL: originalURL }))
+    .then(data => data ? data : URL.create({ shortURL, originalURL }))
     .then(data =>
       //回到index頁面顯示原 始網址與短網址
       res.render('index', {

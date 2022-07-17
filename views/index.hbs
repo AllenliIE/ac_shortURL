@@ -1,7 +1,7 @@
 <div class="container text-center" style="width:30rem;">
   {{#if shortURL}}
   <h3>Success! Please use this link:</h3>
-  <p>{{origin}}/{{shortURL}}</p>
+  <a href="/">{{origin}}/{{shortURL}}</a>
   <button type="button" class="copy btn btn-primary mt-4">Copy</button>
   {{else}}
   <form action="/" method="POST">
