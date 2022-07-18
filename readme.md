@@ -5,19 +5,24 @@
 **功能介紹**
 
 1. 使用者可以觀看短網址產生器的操作介面。
-![image/1.短網址產生器-首頁.png]
+![1.短網址產生器-首頁]
+(https://github.com/AllenliIE/ac_shortURL/blob/main/image/1.短網址產生器-首頁.png)
 
 2. 使用者可以避免輸入非網址內容，設置錯誤提醒。
-![image/2.短網址產生器-輸入錯誤提醒.png]
+![2.短網址產生器-輸入錯誤提醒]
+(https://github.com/AllenliIE/ac_shortURL/blob/main/image/2.短網址產生器-輸入錯誤提醒.png)
 
 3. 使用者可以點選Shorten按鈕，可將原始網址自動轉換成短網址。
-![image/3.短網址產生器-短網址轉換功能.png]
+![3.短網址產生器-短網址轉換功能]
+(https://github.com/AllenliIE/ac_shortURL/blob/main/image/3.短網址產生器-短網址轉換功能.png)
 
 4. 使用者可以點選Copy按鈕，將短網址進行複製功能。
-![image/4.短網址產生器-複製短網址功能.png]
+![4.短網址產生器-複製短網址功能]
+(https://github.com/AllenliIE/ac_shortURL/blob/main/image/4.短網址產生器-複製短網址功能.png)
 
 5. 使用者可以執行短網址，可連線到原網址。
-![image/5.短網址產生器-執行短網址導入原始網址.png]
+![5.短網址產生器-執行短網址導入原始網址]
+(https://github.com/AllenliIE/ac_shortURL/blob/main/image/5.短網址產生器-執行短網址導入原始網址.png)
 
 ## Getting Start
 
