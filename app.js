@@ -5,21 +5,7 @@ const port = 3000
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const routes = require('./routes')
-
-//Setting Mongoose
-const mongoose = require('mongoose')
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-
-//Connection mongoose
-const db = mongoose.connection
-//db.on error
-db.on('error', () => {
-  console.log('mongodb error!')
-})
-//db.once connected
-db.once('open', () => {
-  console.log('mongodb connected!')
-})
+require('./config/mongoose')
 
 //Use handlebars to template engine setting
 app.use(bodyParser.urlencoded({ extended: true }))
