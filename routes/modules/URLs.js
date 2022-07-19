@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
 })
 
 //Setting shortURL link with originalURL
-router.get("/:shortURL", (req, res) => {
+router.get('/:shortURL', (req, res) => {
   //用params取出短網址的新id
   const { shortURL } = req.params
 
@@ -33,7 +33,7 @@ router.get("/:shortURL", (req, res) => {
   URL.findOne({ shortURL })
     .then(data => {
       if (!data) {
-        return res.render("error", {
+        return res.render('error', {
           errorMsg: "Can't found the URL",
           errorURL: req.headers.host + "/" + shortURL,
         })
